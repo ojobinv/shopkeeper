@@ -8,11 +8,12 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
 
-	<context:component-scan base-package="dev.ovj.shopkeeper.controller">
+	<context:component-scan base-package="dev.ovj.shopkeeper">
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
+	<jdbc:embedded-database type="HSQL" id="dataSource" />
 
 	<bean id="emf"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -24,10 +25,13 @@
 				<prop key="hibernate.hbm2ddl.auto">create</prop>
 			</props>
 		</property>
-		<property name="loadTimeWeaver">
+		<property name="persistenceProvider">
+			<bean class="org.hibernate.jpa.HibernatePersistenceProvider" />
+		</property>
+		<!-- <property name="loadTimeWeaver">
 			<bean
 				class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
-		</property>
+		</property> -->
 	</bean>
 
 	<tx:annotation-driven transaction-manager="transactionManager" />
