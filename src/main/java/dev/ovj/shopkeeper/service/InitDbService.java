@@ -32,7 +32,7 @@ public class InitDbService {
 		roleRepository.save(roleUser);
 		
 		Role roleAdmin = new Role();
-		roleAdmin.setRole_name("ROLE_USER");
+		roleAdmin.setRole_name("ROLE_ADMIN");
 		roleRepository.save(roleAdmin);
 		
 		
