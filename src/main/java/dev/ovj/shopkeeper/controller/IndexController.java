@@ -9,8 +9,8 @@ public class IndexController {
 
 	@RequestMapping("/index")
 	public String index(){
-		System.out.println("/WEB-INF/jsp/index.jsp");
-		return "/WEB-INF/jsp/index.jsp";
+		System.out.println("/WEB-INF/jsp/welcome.jsp");
+		return "/WEB-INF/jsp/welcome.jsp";
 	}
 	
 	@RequestMapping("/index.json")  
